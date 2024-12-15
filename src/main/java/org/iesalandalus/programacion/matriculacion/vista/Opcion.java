@@ -25,7 +25,7 @@ public enum Opcion {
 
     private String mensaje;
 
-    private Opcion(String mensaje) {
+    Opcion(String mensaje) {
         this.mensaje = mensaje;
     }
 
