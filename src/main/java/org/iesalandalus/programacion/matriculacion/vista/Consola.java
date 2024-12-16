@@ -165,7 +165,7 @@ public final class Consola {
         return new Asignatura(codigo, "Nombre Ficticio", 100, Curso.PRIMERO, 0, EspecialidadProfesorado.INFORMATICA, new CicloFormativo(1, "Familia Ficticia", Grado.GDCFGS, "Nombre Ficticio", 1000));
     }
 
-    public static void mostrarAsignaturas(Asignatura[] asignaturas) {
+    private static void mostrarAsignaturas(Asignatura[] asignaturas) {
         for (Asignatura asignatura : asignaturas) {
             if (asignatura != null) {
                 System.out.println(asignatura);
@@ -173,7 +173,7 @@ public final class Consola {
         }
     }
 
-    public static boolean asignaturaYaMatriculada(Asignatura[] asignaturas, Asignatura asignatura) {
+    private static boolean asignaturaYaMatriculada(Asignatura[] asignaturas, Asignatura asignatura) {
         for (Asignatura a : asignaturas) {
             if (a != null && a.equals(asignatura)) {
                 return true;

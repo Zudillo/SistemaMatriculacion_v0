@@ -6,7 +6,7 @@ public class Asignatura {
 
     public static final int MAX_NUM_HORAS_ANUALES = 300;
     public static final int MAX_NUM_HORAS_DESDOBLES = 6;
-    public static final String ER_CODIGO = "^\\d{4}$";
+    private static final String ER_CODIGO = "^\\d{4}$";
 
 
     private String codigo;
@@ -21,7 +21,7 @@ public class Asignatura {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    private void setCodigo(String codigo) {
         if (codigo == null ) {
             throw new NullPointerException("ERROR: El código de una asignatura no puede ser nulo.");
         }

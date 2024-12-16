@@ -12,7 +12,7 @@ public class Matricula {
     public static final int MAXIMO_DIAS_ANTERIOR_MATRICULA = 15;
     public static final int MAXIMO_NUMERO_HORAS_MATRICULA = 1000;
     public static final int MAXIMO_NUMERO_ASIGNATURAS_POR_MATRICULA = 10;
-    public static final String ER_CURSO_ACADEMICO = "^\\d{2}-\\d{2}$";
+    private static final String ER_CURSO_ACADEMICO = "^\\d{2}-\\d{2}$";
     public static final String FORMATO_FECHA = "dd/MM/yyyy";
 
     private int idMatricula;

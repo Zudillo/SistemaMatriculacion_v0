@@ -1,7 +1,6 @@
 package org.iesalandalus.programacion.matriculacion.dominio;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -10,11 +9,11 @@ import java.util.regex.Pattern;
 public class Alumno {
 
     public static final String ER_TELEFONO = "^\\d{9}$";
-    public static final String ER_CORREO = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    public static final String ER_DNI = "^(\\d{8})([A-Z])$";
-    public static final String FORMATO_FECHA = "dd/MM/YYYY";
-    public static final String ER_NIA = "^[a-z]{4}\\d{3}$";
-    public static final int MIN_EDAD_ALUMNADO = 16;
+    private static final String ER_CORREO = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    private static final String ER_DNI = "^(\\d{8})([A-Z])$";
+    private static final String FORMATO_FECHA = "dd/MM/YYYY";
+    private static final String ER_NIA = "^[a-z]{4}\\d{3}$";
+    private static final int MIN_EDAD_ALUMNADO = 16;
 
     private String nombre;
     private String telefono;
@@ -29,7 +28,7 @@ public class Alumno {
         setCorreo(correo);
         setTelefono(telefono);
         setFechaNacimiento(fechaNacimiento);
-        calcularNia();
+        setNia();
     }
 
     public Alumno(Alumno alumno) {
@@ -56,14 +55,14 @@ public class Alumno {
         if (nombreFormateado.isEmpty()) {
             throw new IllegalArgumentException("ERROR: El nombre de un alumno no puede estar vacío.");
         }
-        this.nombre = formatearNombre(nombreFormateado);
+        this.nombre = formateaNombre(nombreFormateado);
     }
 
     public String getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    private void setDni(String dni) {
         if (dni == null) {
             throw new NullPointerException("ERROR: El dni de un alumno no puede ser nulo.");
         }
@@ -112,7 +111,7 @@ public class Alumno {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    private void setFechaNacimiento(LocalDate fechaNacimiento) {
         if (fechaNacimiento == null) {
             throw new NullPointerException("ERROR: La fecha de nacimiento de un alumno no puede ser nula.");
         }
@@ -126,13 +125,13 @@ public class Alumno {
         return nia;
     }
 
-    private void calcularNia() {
+    private void setNia() {
         String nombreBase = nombre.toLowerCase().substring(0, 4);
         String dniBase = dni.substring(5, 8);
         this.nia = nombreBase + dniBase;
     }
 
-    private String formatearNombre(String nombre) {
+    private String formateaNombre(String nombre) {
         String[] palabras = nombre.split(" ");
         StringBuilder formateado = new StringBuilder();
         for (String palabra : palabras) {

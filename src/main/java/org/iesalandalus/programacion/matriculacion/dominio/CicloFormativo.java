@@ -16,7 +16,7 @@ public class CicloFormativo {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    private void setCodigo(int codigo) {
         if (codigo < 1000 || codigo > 9999) {
             throw new IllegalArgumentException("El código debe ser un número de cuatro dígitos.");
         }
